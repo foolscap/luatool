@@ -72,8 +72,9 @@ if __name__ == '__main__':
     parser.add_argument('-b', '--baud',    default=9600,           help='serial port baudrate (default: 9600)')
     parser.add_argument('-f', '--src',     default='main.lua',     help='file to upload (default: main.lua)')
     parser.add_argument('-t', '--dest',    default='main.lua',     help='destination file (default: main.lua)')
-    parser.add_argument('-r', '--restart', action='store_true',    help='restart ESP8266 after upload')
-    parser.add_argument('-d', '--dofile',  action='store_true',    help='run file after upload')
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument('-r', '--restart', action='store_true',    help='restart ESP8266 after upload')
+    group.add_argument('-d', '--dofile',  action='store_true',    help='run file after upload')
     parser.add_argument('-v', '--verbose', action='store_true',    help="show progress messages")
     args = parser.parse_args()
 
