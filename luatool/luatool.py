@@ -68,14 +68,14 @@ def writer(data):
 if __name__ == '__main__':
     # parse arguments or use defaults
     parser = argparse.ArgumentParser(description='ESP8266 Lua script uploader.')
-    parser.add_argument('-p', '--port',    default='/dev/ttyUSB0', help='serial port device (default: /dev/ttyUSB0)')
-    parser.add_argument('-b', '--baud',    default=9600,           help='serial port baudrate (default: 9600)')
+    parser.add_argument('-p', '--port',    default='/dev/ttyUSB0', help='serial port device (default: "/dev/ttyUSB0")')
+    parser.add_argument('-b', '--baud',    default=9600,           help='serial port baudrate (default: "9600")')
     parser.add_argument('-t', '--dest',    help='destination file (default: preserve file name)')
     group = parser.add_mutually_exclusive_group()
     group.add_argument('-r', '--restart', action='store_true',    help='restart ESP8266 after upload')
     group.add_argument('-d', '--dofile',  action='store_true',    help='run file after upload')
-    parser.add_argument('-v', '--verbose', action='store_true',    help="show progress messages")
-    parser.add_argument('src', nargs='?', default='main.lua', help='file to upload (default: main.lua)')
+    parser.add_argument('-v', '--verbose', action='store_true',    help='show progress messages')
+    parser.add_argument('src', metavar='file', nargs='?', default='main.lua', help='file to upload (default: "main.lua")')
     args = parser.parse_args()
     args.dest = args.src if args.dest is None else args.dest
 
