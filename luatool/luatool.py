@@ -68,13 +68,13 @@ def writer(data):
 if __name__ == '__main__':
     # parse arguments or use defaults
     parser = argparse.ArgumentParser(description='ESP8266 Lua script uploader.')
-    parser.add_argument('-p', '--port',    default='/dev/ttyUSB0', help='Device name, default /dev/ttyUSB0')
-    parser.add_argument('-b', '--baud',    default=9600,           help='Baudrate, default 9600')
-    parser.add_argument('-f', '--src',     default='main.lua',     help='Source file on computer, default main.lua')
-    parser.add_argument('-t', '--dest',    default='main.lua',     help='Destination file on MCU, default main.lua')
-    parser.add_argument('-r', '--restart', action='store_true',    help='Restart MCU after upload')
-    parser.add_argument('-d', '--dofile',  action='store_true',    help='Run the Lua script after upload')
-    parser.add_argument('-v', '--verbose', action='store_true',    help="Show progress messages.")
+    parser.add_argument('-p', '--port',    default='/dev/ttyUSB0', help='serial port device (default: /dev/ttyUSB0)')
+    parser.add_argument('-b', '--baud',    default=9600,           help='serial port baudrate (default: 9600)')
+    parser.add_argument('-f', '--src',     default='main.lua',     help='file to upload (default: main.lua)')
+    parser.add_argument('-t', '--dest',    default='main.lua',     help='destination file (default: main.lua)')
+    parser.add_argument('-r', '--restart', action='store_true',    help='restart ESP8266 after upload')
+    parser.add_argument('-d', '--dofile',  action='store_true',    help='run file after upload')
+    parser.add_argument('-v', '--verbose', action='store_true',    help="show progress messages")
     args = parser.parse_args()
 
     # open source file for reading
@@ -95,7 +95,7 @@ if __name__ == '__main__':
             f.close()
             sys.exit(1)
 
-    # Go back to the beginning of the file after verifying it has the correct 
+    # Go back to the beginning of the file after verifying it has the correct
     # line length
     f.seek(0)
 
