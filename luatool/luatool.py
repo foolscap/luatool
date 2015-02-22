@@ -75,7 +75,7 @@ if __name__ == '__main__':
     group.add_argument('-r', '--restart', action='store_true',    help='restart ESP8266 after upload')
     group.add_argument('-d', '--dofile',  action='store_true',    help='run file after upload')
     parser.add_argument('-v', '--verbose', action='store_true',    help='show progress messages')
-    parser.add_argument('src', metavar='file', nargs='?', default='main.lua', help='file to upload (default: "main.lua")')
+    parser.add_argument('src', metavar='file', help='file to upload')
     args = parser.parse_args()
     args.dest = args.src if args.dest is None else args.dest
 
